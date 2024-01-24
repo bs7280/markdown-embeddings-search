@@ -39,9 +39,12 @@ with your hands, coiling your hips and shoulders in the backswing
   and using your right elbow to hip as a useful technique in your swing.
 ```
 
-## Obsidian
+## Enhancements and todos
 
-Enhancements:
+- Find best way to update notes
+    - Don't want to update ALL notes every N days/hours/etc...
+    - Ideally update only nodes that change
+- Alfred extension
 - Modify MarkdownReader() 
     - to give line numbers of origional file
         - git diffs on text?
@@ -50,8 +53,10 @@ Enhancements:
         - start bottom up and ensure each doc / node has enough content to be meaningful
         - start splitting as you go up
     - summarize each node + children
-        - Add  ai tags to each node
-        - add summary meta data of all nodes under tree
+        - Add  llamaindex metadata tag objects to vector index
+        - add summary to meta data of all nodes under tree
+            - ai.llms -> "Local LLaMa information"
+            - ai.llms.google-flan -> "Flan model for text2text..."
     - include other frontmatter as meta data
     - links from other documents in node references
 - treat notes like a big knowledge graph? Use llama_index's knowledge graph specific tools
