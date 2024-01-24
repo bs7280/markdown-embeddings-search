@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpassword
+      POSTGRES_DB: helloworld_db
+    ports:
+      - "5432:5432"
+    #volumes:
+    #  - /path/on/host:/var/lib/postgresql/data
