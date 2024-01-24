@@ -33,7 +33,10 @@ Prompt: `What are my recent golf swing thoughts`
 
 Response:
 ```
-Recently, you have been focusing on achieving a "true neutral" feeling with your hands, coiling your hips and shoulders in the backswing while keeping your back towards the target on the downswing, and using your right elbow to hip as a useful technique in your swing.
+Recently, you have been focusing on achieving a "true neutral" feeling 
+with your hands, coiling your hips and shoulders in the backswing
+ while keeping your back towards the target on the downswing,
+  and using your right elbow to hip as a useful technique in your swing.
 ```
 
 ## Obsidian
