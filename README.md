@@ -1,5 +1,5 @@
 # Experimenting with llama index with local models
-The results of messing with llama-index for a RAG tool on my markdown notes. 
+The results of messing with llama-index for a RAG tool on my markdown notes. This is as bare bones as it gets, currently missing easy features like a CLI for updating and querying against notes.
 
 ## Setup
 `pip install requirements.txt` or `pip install llama-index`
