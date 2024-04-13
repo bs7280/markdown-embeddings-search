@@ -8,14 +8,15 @@ The results of messing with llama-index for a RAG tool on my markdown notes. Thi
 
 ### Local Backend
 
-#TODO support local model and database
-At the time I last worked on this I was having docker issues, so I used pineconeDB instead. They have $100 of free credit until June 1st 2024.
-
 Setup local postgres service in docker-compose:
 
 `docker-compose up`
 
 which includes pgadmin at localhost:8888
+
+### Pinecone
+
+CLI does not have pinecone backend supported yet but I have a POC working... #TODO
 
 ## Running
 
