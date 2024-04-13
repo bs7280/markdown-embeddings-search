@@ -1,4 +1,5 @@
 # Experimenting with llama index with local models
+
 The results of messing with llama-index for a RAG tool on my markdown notes. This is as bare bones as it gets, currently missing easy features like a CLI for updating and querying against notes.
 
 ## Setup
@@ -6,21 +7,15 @@ The results of messing with llama-index for a RAG tool on my markdown notes. Thi
 `pip install requirements.txt` or `pip install llama-index`
 
 ### Local Backend
+
 #TODO support local model and database
 At the time I last worked on this I was having docker issues, so I used pineconeDB instead. They have $100 of free credit until June 1st 2024.
 
 Setup local postgres service in docker-compose:
-<<<<<<< HEAD
 
 `docker-compose up`
 
 which includes pgadmin at localhost:8888
-=======
-```
-todo
-```
-### PineconeDB backend
->>>>>>> c35f54d3a72cdc8cdd6c120254ac0190a761965a
 
 ## Running
 
@@ -70,53 +65,30 @@ with your hands, coiling your hips and shoulders in the backswing
 
 ## Enhancements and todos
 
-<<<<<<< HEAD
-- Find best way to update notes
-  - Don't want to update ALL notes every N days/hours/etc...
-  - Ideally update only nodes that change
-- Alfred extension
-- Modify MarkdownReader()
-  - to give line numbers of origional file
-    - git diffs on text?
-  - ensure notes are properly broken up
-    - Make entire notes into a tree (file + headers)
-    - start bottom up and ensure each doc / node has enough content to be meaningful
-    - start splitting as you go up
-  - summarize each node + children
-    - Add llamaindex metadata tag objects to vector index
-    - add summary to meta data of all nodes under tree
-      - ai.llms -> "Local LLaMa information"
-      - ai.llms.google-flan -> "Flan model for text2text..."
+- [ ] Check for updates in notes and store / update them in pinecone
+  - Use [obsidian-git](https://github.com/denolehov/obsidian-git) and run update check in a build pipeline?
+- [ ] Interface to search my notes
+  - Alfred extension?
+  - cli interface
+  - obsidian plugin
+
+Disorganized list of ideas for more more complicated architecture to fit my note system
+
+- Ideas for more more complicated architecture to fit my note system
+  - Modify MarkdownReader()
+    - to give line numbers of origional file
+      - git diffs on text?
+    - ensure notes are properly broken up
+      - Make entire notes into a tree (file + headers)
+      - start bottom up and ensure each doc / node has enough content to be meaningful
+      - start splitting as you go up
+    - summarize each node + children
+      - Add llamaindex metadata tag objects to vector index
+      - add summary to meta data of all nodes under tree
+        - ai.llms -> "Local LLaMa information"
+        - ai.llms.google-flan -> "Flan model for text2text..."
   - include other frontmatter as meta data
   - links from other documents in node references
-- treat notes like a big knowledge graph? Use llama_index's knowledge graph specific tools
-- Graph specifically of links and related text
-  - Bonus: Content of webpage
-=======
-- [ ] Check for updates in notes and store / update them in pinecone
-    - Use [obsidian-git](https://github.com/denolehov/obsidian-git) and run update check in a build pipeline?
-- [ ] Interface to search my notes
-    - Alfred extension?
-    - cli interface
-    - obsidian plugin
-
-Disorganized list of ideas for more more complicated architecture to fit my note system 
-- Ideas for more more complicated architecture to fit my note system 
-    - Modify MarkdownReader() 
-        - to give line numbers of origional file
-            - git diffs on text?
-        - ensure notes are properly broken up
-            - Make entire notes into a tree (file + headers) 
-            - start bottom up and ensure each doc / node has enough content to be meaningful
-            - start splitting as you go up
-        - summarize each node + children
-            - Add  llamaindex metadata tag objects to vector index
-            - add summary to meta data of all nodes under tree
-                - ai.llms -> "Local LLaMa information"
-                - ai.llms.google-flan -> "Flan model for text2text..."
-    - include other frontmatter as meta data
-    - links from other documents in node references
-    - treat notes like a big knowledge graph? Use llama_index's knowledge graph specific tools
-    - Graph specifically of links and related text 
-        - Bonus: Content of webpage
->>>>>>> c35f54d3a72cdc8cdd6c120254ac0190a761965a
+  - treat notes like a big knowledge graph? Use llama_index's knowledge graph specific tools
+  - Graph specifically of links and related text
+    - Bonus: Content of webpage
