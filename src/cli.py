@@ -75,8 +75,6 @@ if args.command == "query":
     query = "What ideas have I written down relating to the macos workflow tool Alfred?"
 
     print(ask(args.query))
-
-    breakpoint()
 elif args.command == "search":
     retriever = get_retriever("obsidian_vault")
 
