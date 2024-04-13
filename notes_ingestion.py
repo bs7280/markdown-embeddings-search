@@ -81,6 +81,7 @@ pc = Pinecone(
     api_key=os.environ.get("PINECONE_API_KEY")
 )
 
+use_finetuned=False
 write_data=False
 if write_data:
     if index_name not in pc.list_indexes().names():
@@ -118,16 +119,26 @@ else:
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
 
+from llama_index.llms import OpenAI
+from llama_index import ServiceContext
+llm = OpenAI(tempurature=0.1, model="ft:gpt-3.5-turbo-0613:personal::8fzzIldV")
+service_context = ServiceContext.from_defaults(llm=llm)
+
+# Yes I know this is bad
+from llama_index import set_global_service_context
+if use_finetuned:
+    set_global_service_context(service_context)
+
 
 # configure retriever
 retriever = VectorIndexRetriever(
     index=index,
     similarity_top_k=10,
+    #service_context=service_context
 )
 
 # configure response synthesizer
 response_synthesizer = get_response_synthesizer()
-
 
 # assemble query engine
 query_engine = RetrieverQueryEngine(
@@ -135,6 +146,11 @@ query_engine = RetrieverQueryEngine(
     response_synthesizer=response_synthesizer,
     #node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.7)],
 )
+
+if False: # Debug mode sorta
+    query_engine = RetrieverQueryEngine.from_args(
+        retriever, response_mode='no_text'
+    )
 
 #query_engine = index.as_query_engine()
 def ask(query, query_engine=query_engine):
@@ -147,8 +163,13 @@ def list_files(query, retriever=retriever, k=10):
     ]
 
 query = "What ideas have I written down relating to the macos workflow tool Alfred?"
+
+breakpoint()
+
 response = ask(query)
 
 print(response.response)
+breakpoint()
 
-list_files(query, k=2)
+
+#list_files(query, k=2)
